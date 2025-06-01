@@ -1,0 +1,29 @@
+{
+  "test_date": "2025-06-01 16:05:02",
+  "test_results": {
+    "Standard": {
+      "accuracy": 0.6503267973856209,
+      "recent_accuracy": 0.66,
+      "energy_violations": 0,
+      "accuracy_violations": 0,
+      "avg_cameras_per_classification": 1.0,
+      "game_theory_metrics": null
+    },
+    "Enhanced Only": {
+      "accuracy": 0.4803921568627451,
+      "recent_accuracy": 0.88,
+      "energy_violations": 0,
+      "accuracy_violations": 71,
+      "avg_cameras_per_classification": 3.3,
+      "game_theory_metrics": null
+    },
+    "Game Theory": {
+      "accuracy": 0.4477124183006536,
+      "recent_accuracy": 0.92,
+      "energy_violations": 0,
+      "accuracy_violations": 102,
+      "avg_cameras_per_classification": 3.4,
+      "game_theory_metrics": null
+    }
+  }
+}

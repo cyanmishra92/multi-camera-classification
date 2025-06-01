@@ -1,0 +1,29 @@
+# Default configuration for multi-camera classification
+
+network:
+  num_cameras: 10
+  num_classes: 3
+  num_objects: 5
+
+energy:
+  battery_capacity: 1000  # cap
+  recharge_rate: 10      # r
+  classification_cost: 50 # delta
+  min_operational: 100    # delta_min
+  
+accuracy:
+  max_accuracy: 0.95      # alpha_max
+  min_accuracy_ratio: 0.3 # beta
+  high_energy_threshold: 0.8
+  low_energy_threshold: 0.3
+  correlation_factor: 0.2 # rho
+
+game_theory:
+  reward_scale: 1.0       # gamma
+  incorrect_penalty: 0.5  # delta
+  non_participation_penalty: 0.8 # eta
+  discount_factor: 0.9    # beta
+
+algorithms:
+  min_accuracy_threshold: 0.8 # alpha_min
+  history_length: 10      # k

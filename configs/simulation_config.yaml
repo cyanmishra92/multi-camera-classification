@@ -1,0 +1,14 @@
+# Simulation parameters
+
+simulation:
+  duration: 10000
+  time_step: 1.0
+  random_seed: 42
+  
+events:
+  classification_frequency: 0.1
+  arrival_distribution: "poisson"
+  
+logging:
+  level: "INFO"
+  save_interval: 100

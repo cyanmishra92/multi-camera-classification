@@ -1,0 +1,23 @@
+{
+  "parameters": {
+    "min_accuracy_threshold": 0.8,
+    "position_weight": 0.7,
+    "participation_bonus": 0.2,
+    "energy_weight": 0.3,
+    "overlap_bonus": 0.2,
+    "distance_decay": 0.01,
+    "angle_penalty": 0.3,
+    "reward_scale": 2.0,
+    "incorrect_penalty": 0.3,
+    "non_participation_penalty": 1.0,
+    "discount_factor": 0.85,
+    "convergence_threshold": 0.01,
+    "future_value_weight": 0.3
+  },
+  "test_results": {
+    "accuracy": 0.56312625250501,
+    "recent_accuracy": 0.91,
+    "avg_cameras_per_classification": 3.4,
+    "violations": 87
+  }
+}

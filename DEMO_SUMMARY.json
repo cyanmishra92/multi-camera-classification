@@ -1,0 +1,113 @@
+{
+  "demo_date": "2025-06-01 16:04:53",
+  "demo_results": {
+    "Basic Simulation": {
+      "status": "success",
+      "runtime": 0.29686903953552246,
+      "output_summary": [
+        "2025-06-01 16:04:53,476 - src.main - INFO - Results saved to demo_basic_results.json",
+        "",
+        "Simulation Summary:",
+        "Algorithm: fixed",
+        "Duration: 2000",
+        "Total Classifications: 181",
+        "Overall Accuracy: 0.530",
+        "Recent Accuracy: 0.560",
+        "Energy Violations: 0",
+        "Accuracy Violations: 0"
+      ]
+    },
+    "Algorithm Comparison": {
+      "status": "success",
+      "runtime": 2.9679975509643555,
+      "output_summary": [
+        "       fixed: 0",
+        "    variable: 0",
+        "     unknown: 474",
+        "",
+        "Plots saved to: algorithm_comparison.png",
+        "",
+        "Analyzing energy dynamics...",
+        "Energy dynamics saved to: energy_dynamics.png",
+        "",
+        "Comparison complete!"
+      ]
+    },
+    "Enhanced Accuracy Test": {
+      "status": "success",
+      "runtime": 3.5059080123901367,
+      "output_summary": [
+        "  Runtime: 0.11s",
+        "  Coverage Analysis:",
+        "    Avg Coverage: 3.89 cameras",
+        "    Blind Spots: 88",
+        "    Well Covered: 214",
+        "",
+        "Plots saved to: enhanced_accuracy_comparison.pdf",
+        "Results saved to: enhanced_accuracy_test_results.json",
+        "",
+        "Enhanced accuracy model test complete!"
+      ]
+    },
+    "Game Theory Test": {
+      "status": "success",
+      "runtime": 2.515897512435913,
+      "output_summary": [
+        "",
+        "Key Findings:",
+        "----------------------------------------",
+        "\u2717 Game theory reduces accuracy by 20.3%",
+        "\u2717 Game theory reduces efficiency (uses 2.40 more cameras)",
+        "\u2717 Game theory increases violations by 102",
+        "",
+        "Detailed results saved to: game_theory_test_results.json",
+        "",
+        "Game theory test complete!"
+      ]
+    },
+    "Adaptive Algorithm Test": {
+      "status": "success",
+      "runtime": 3.8768324851989746,
+      "output_summary": [
+        "================================================================================",
+        "Algorithm                   Accuracy     Recent    Cameras   Target Met",
+        "--------------------------------------------------------------------------------",
+        "Standard Algorithm             0.631      0.570       1.00         \u274c NO",
+        "Enhanced Algorithm             0.521      0.900       3.30         \u274c NO",
+        "Game Theory Algorithm          0.543      0.890       3.40         \u274c NO",
+        "Adaptive Algorithm             0.543      0.890       3.40         \u274c NO",
+        "================================================================================",
+        "",
+        "Adaptive algorithm test complete!"
+      ]
+    }
+  },
+  "visualization_status": "success",
+  "generated_files": {
+    "PDF Reports": [
+      "game_theory_comparison.pdf",
+      "adaptive_algorithm_comparison.pdf",
+      "parameter_tuning_results.pdf",
+      "enhanced_accuracy_comparison.pdf",
+      "DEMO_algorithm_comparison.pdf",
+      "DEMO_comprehensive_analysis.pdf",
+      "comprehensive_analysis.pdf"
+    ],
+    "JSON Results": [
+      "results_fixed_comparison.json",
+      "results_unknown_comparison.json",
+      "game_theory_test_results.json",
+      "results.json",
+      "results_variable_comparison.json",
+      "adaptive_algorithm_results.json",
+      "enhanced_accuracy_test_results.json",
+      "demo_basic_results.json"
+    ],
+    "Other Files": []
+  },
+  "summary": {
+    "total_demos_run": 5,
+    "successful_demos": 5,
+    "total_runtime": 13.163504600524902
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "test_date": "2025-06-01 16:04:59",
+  "comparison_results": {
+    "fixed": {
+      "original": {
+        "accuracy": 0.6388888888888888,
+        "recent_accuracy": 0.66,
+        "energy_violations": 0,
+        "accuracy_violations": 0,
+        "avg_cameras_per_classification": 1.0
+      },
+      "enhanced": {
+        "accuracy": 0.5462962962962963,
+        "recent_accuracy": 0.91,
+        "energy_violations": 0,
+        "accuracy_violations": 35,
+        "avg_cameras_per_classification": 3.4
+      },
+      "improvement": {
+        "accuracy_gain": -0.09259259259259256,
+        "efficiency_gain": -2.4
+      }
+    },
+    "variable": {
+      "original": {
+        "accuracy": 0.5787037037037037,
+        "recent_accuracy": 0.54,
+        "energy_violations": 0,
+        "accuracy_violations": 0,
+        "avg_cameras_per_classification": 3.3
+      },
+      "enhanced": {
+        "accuracy": 0.5787037037037037,
+        "recent_accuracy": 0.54,
+        "energy_violations": 0,
+        "accuracy_violations": 0,
+        "avg_cameras_per_classification": 3.3
+      },
+      "improvement": {
+        "accuracy_gain": 0.0,
+        "efficiency_gain": 0.0
+      }
+    },
+    "unknown": {
+      "original": {
+        "accuracy": 0.7142857142857143,
+        "recent_accuracy": 0.0,
+        "energy_violations": 209,
+        "accuracy_violations": 0,
+        "avg_cameras_per_classification": 1.4285714285714286
+      },
+      "enhanced": {
+        "accuracy": 0.7142857142857143,
+        "recent_accuracy": 0.0,
+        "energy_violations": 209,
+        "accuracy_violations": 0,
+        "avg_cameras_per_classification": 1.4285714285714286
+      },
+      "improvement": {
+        "accuracy_gain": 0.0,
+        "efficiency_gain": 0.0
+      }
+    }
+  }
+}
