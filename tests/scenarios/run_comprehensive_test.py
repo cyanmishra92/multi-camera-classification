@@ -21,7 +21,7 @@ from pathlib import Path
 import argparse
 
 # Add parent directory to path
-sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from src.main import create_network_from_config, run_simulation, load_config
 from src.utils.logger import setup_logging

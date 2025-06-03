@@ -49,7 +49,7 @@ echo "  Config: $CONFIG"
 echo ""
 
 # Run the comprehensive test
-python tests/run_comprehensive_test.py \
+python tests/scenarios/run_comprehensive_test.py \
     --duration "$DURATION" \
     --frequency "$FREQUENCY" \
     --config "$CONFIG"
