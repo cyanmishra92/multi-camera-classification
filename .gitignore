@@ -138,6 +138,8 @@ logs/
 *.log
 temp/
 tmp/
+old_results/
+test_results_*/
 
 # Large result files (keep only example results)
 results_*.json
