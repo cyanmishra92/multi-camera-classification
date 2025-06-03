@@ -1,0 +1,2011 @@
+{
+  "network_stats": {
+    "total_cameras": 10,
+    "active_cameras": 10,
+    "avg_energy": 1000.0,
+    "avg_accuracy": 0.9499999999999998,
+    "total_classifications": 11,
+    "successful_classifications": 5,
+    "accuracy": 0.45454545454545453,
+    "energy_violations": 0,
+    "accuracy_violations": 0,
+    "avg_cameras_per_classification": 1.0,
+    "recent_accuracy": 0.45454545454545453,
+    "simulation_time": 100.0
+  },
+  "algorithm_type": "fixed",
+  "duration": 100,
+  "classification_frequency": 0.1,
+  "total_events": 11,
+  "performance_history": [
+    {
+      "timestamp": 8.0,
+      "classification_count": 1,
+      "result": {
+        "instance_id": 0,
+        "success": true,
+        "prediction": 1,
+        "true_label": 1,
+        "selected_cameras": [
+          0
+        ],
+        "collective_accuracy": 0.908971789848696,
+        "individual_correct": 1,
+        "total_participating": 1,
+        "timestamp": 8.0
+      }
+    },
+    {
+      "timestamp": 31.0,
+      "classification_count": 2,
+      "result": {
+        "instance_id": 1,
+        "success": false,
+        "prediction": 3,
+        "true_label": 0,
+        "selected_cameras": [
+          1
+        ],
+        "collective_accuracy": 0.908971789848696,
+        "individual_correct": 0,
+        "total_participating": 1,
+        "timestamp": 31.0
+      }
+    },
+    {
+      "timestamp": 38.0,
+      "classification_count": 3,
+      "result": {
+        "instance_id": 2,
+        "success": false,
+        "prediction": 3,
+        "true_label": 0,
+        "selected_cameras": [
+          2
+        ],
+        "collective_accuracy": 0.908971789848696,
+        "individual_correct": 0,
+        "total_participating": 1,
+        "timestamp": 38.0
+      }
+    },
+    {
+      "timestamp": 40.0,
+      "classification_count": 4,
+      "result": {
+        "instance_id": 3,
+        "success": false,
+        "prediction": 4,
+        "true_label": 0,
+        "selected_cameras": [
+          0
+        ],
+        "collective_accuracy": 0.908971789848696,
+        "individual_correct": 0,
+        "total_participating": 1,
+        "timestamp": 40.0
+      }
+    },
+    {
+      "timestamp": 48.0,
+      "classification_count": 5,
+      "result": {
+        "instance_id": 4,
+        "success": false,
+        "prediction": 0,
+        "true_label": 1,
+        "selected_cameras": [
+          1
+        ],
+        "collective_accuracy": 0.908971789848696,
+        "individual_correct": 0,
+        "total_participating": 1,
+        "timestamp": 48.0
+      }
+    },
+    {
+      "timestamp": 53.0,
+      "classification_count": 6,
+      "result": {
+        "instance_id": 5,
+        "success": true,
+        "prediction": 0,
+        "true_label": 0,
+        "selected_cameras": [
+          2
+        ],
+        "collective_accuracy": 0.908971789848696,
+        "individual_correct": 1,
+        "total_participating": 1,
+        "timestamp": 53.0
+      }
+    },
+    {
+      "timestamp": 58.0,
+      "classification_count": 7,
+      "result": {
+        "instance_id": 6,
+        "success": true,
+        "prediction": 0,
+        "true_label": 0,
+        "selected_cameras": [
+          0
+        ],
+        "collective_accuracy": 0.908971789848696,
+        "individual_correct": 1,
+        "total_participating": 1,
+        "timestamp": 58.0
+      }
+    },
+    {
+      "timestamp": 60.0,
+      "classification_count": 8,
+      "result": {
+        "instance_id": 7,
+        "success": true,
+        "prediction": 1,
+        "true_label": 1,
+        "selected_cameras": [
+          1
+        ],
+        "collective_accuracy": 0.908971789848696,
+        "individual_correct": 1,
+        "total_participating": 1,
+        "timestamp": 60.0
+      }
+    },
+    {
+      "timestamp": 63.0,
+      "classification_count": 9,
+      "result": {
+        "instance_id": 8,
+        "success": false,
+        "prediction": 0,
+        "true_label": 1,
+        "selected_cameras": [
+          2
+        ],
+        "collective_accuracy": 0.908971789848696,
+        "individual_correct": 0,
+        "total_participating": 1,
+        "timestamp": 63.0
+      }
+    },
+    {
+      "timestamp": 73.0,
+      "classification_count": 10,
+      "result": {
+        "instance_id": 9,
+        "success": false,
+        "prediction": 2,
+        "true_label": 0,
+        "selected_cameras": [
+          0
+        ],
+        "collective_accuracy": 0.908971789848696,
+        "individual_correct": 0,
+        "total_participating": 1,
+        "timestamp": 73.0
+      }
+    },
+    {
+      "timestamp": 81.0,
+      "classification_count": 11,
+      "result": {
+        "instance_id": 10,
+        "success": true,
+        "prediction": 1,
+        "true_label": 1,
+        "selected_cameras": [
+          1
+        ],
+        "collective_accuracy": 0.908971789848696,
+        "individual_correct": 1,
+        "total_participating": 1,
+        "timestamp": 81.0
+      }
+    }
+  ],
+  "energy_history": [
+    {
+      "timestamp": 1.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 2.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 3.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 4.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 5.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 6.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 7.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 8.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 9.0,
+      "camera_energies": [
+        960.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 996.0,
+      "min_energy": 960.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 10.0,
+      "camera_energies": [
+        970.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 997.0,
+      "min_energy": 970.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 11.0,
+      "camera_energies": [
+        980.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 998.0,
+      "min_energy": 980.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 12.0,
+      "camera_energies": [
+        990.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 999.0,
+      "min_energy": 990.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 13.0,
+      "camera_energies": [
+        1000.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 14.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 15.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 16.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 17.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 18.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 19.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 20.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 21.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 22.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 23.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 24.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 25.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 26.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 27.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 28.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 29.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 30.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 31.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 32.0,
+      "camera_energies": [
+        1000,
+        960.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 996.0,
+      "min_energy": 960.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 33.0,
+      "camera_energies": [
+        1000,
+        970.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 997.0,
+      "min_energy": 970.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 34.0,
+      "camera_energies": [
+        1000,
+        980.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 998.0,
+      "min_energy": 980.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 35.0,
+      "camera_energies": [
+        1000,
+        990.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 999.0,
+      "min_energy": 990.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 36.0,
+      "camera_energies": [
+        1000,
+        1000.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 37.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 38.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 39.0,
+      "camera_energies": [
+        1000,
+        1000,
+        960.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 996.0,
+      "min_energy": 960.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 40.0,
+      "camera_energies": [
+        1000,
+        1000,
+        970.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 997.0,
+      "min_energy": 970.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 41.0,
+      "camera_energies": [
+        960.0,
+        1000,
+        980.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 994.0,
+      "min_energy": 960.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 42.0,
+      "camera_energies": [
+        970.0,
+        1000,
+        990.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 996.0,
+      "min_energy": 970.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 43.0,
+      "camera_energies": [
+        980.0,
+        1000,
+        1000.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 998.0,
+      "min_energy": 980.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 44.0,
+      "camera_energies": [
+        990.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 999.0,
+      "min_energy": 990.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 45.0,
+      "camera_energies": [
+        1000.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 46.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 47.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 48.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 49.0,
+      "camera_energies": [
+        1000,
+        960.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 996.0,
+      "min_energy": 960.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 50.0,
+      "camera_energies": [
+        1000,
+        970.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 997.0,
+      "min_energy": 970.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 51.0,
+      "camera_energies": [
+        1000,
+        980.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 998.0,
+      "min_energy": 980.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 52.0,
+      "camera_energies": [
+        1000,
+        990.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 999.0,
+      "min_energy": 990.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 53.0,
+      "camera_energies": [
+        1000,
+        1000.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 54.0,
+      "camera_energies": [
+        1000,
+        1000,
+        960.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 996.0,
+      "min_energy": 960.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 55.0,
+      "camera_energies": [
+        1000,
+        1000,
+        970.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 997.0,
+      "min_energy": 970.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 56.0,
+      "camera_energies": [
+        1000,
+        1000,
+        980.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 998.0,
+      "min_energy": 980.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 57.0,
+      "camera_energies": [
+        1000,
+        1000,
+        990.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 999.0,
+      "min_energy": 990.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 58.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 59.0,
+      "camera_energies": [
+        960.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 996.0,
+      "min_energy": 960.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 60.0,
+      "camera_energies": [
+        970.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 997.0,
+      "min_energy": 970.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 61.0,
+      "camera_energies": [
+        980.0,
+        960.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 994.0,
+      "min_energy": 960.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 62.0,
+      "camera_energies": [
+        990.0,
+        970.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 996.0,
+      "min_energy": 970.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 63.0,
+      "camera_energies": [
+        1000.0,
+        980.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 998.0,
+      "min_energy": 980.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 64.0,
+      "camera_energies": [
+        1000,
+        990.0,
+        960.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 995.0,
+      "min_energy": 960.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 65.0,
+      "camera_energies": [
+        1000,
+        1000.0,
+        970.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 997.0,
+      "min_energy": 970.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 66.0,
+      "camera_energies": [
+        1000,
+        1000,
+        980.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 998.0,
+      "min_energy": 980.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 67.0,
+      "camera_energies": [
+        1000,
+        1000,
+        990.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 999.0,
+      "min_energy": 990.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 68.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 69.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 70.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 71.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 72.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 73.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 74.0,
+      "camera_energies": [
+        960.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 996.0,
+      "min_energy": 960.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 75.0,
+      "camera_energies": [
+        970.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 997.0,
+      "min_energy": 970.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 76.0,
+      "camera_energies": [
+        980.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 998.0,
+      "min_energy": 980.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 77.0,
+      "camera_energies": [
+        990.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 999.0,
+      "min_energy": 990.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 78.0,
+      "camera_energies": [
+        1000.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 79.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 80.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 81.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 82.0,
+      "camera_energies": [
+        1000,
+        960.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 996.0,
+      "min_energy": 960.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 83.0,
+      "camera_energies": [
+        1000,
+        970.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 997.0,
+      "min_energy": 970.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 84.0,
+      "camera_energies": [
+        1000,
+        980.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 998.0,
+      "min_energy": 980.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 85.0,
+      "camera_energies": [
+        1000,
+        990.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 999.0,
+      "min_energy": 990.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 86.0,
+      "camera_energies": [
+        1000,
+        1000.0,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000.0,
+      "max_energy": 1000.0
+    },
+    {
+      "timestamp": 87.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 88.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 89.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 90.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 91.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 92.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 93.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 94.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 95.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 96.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 97.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 98.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 99.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    },
+    {
+      "timestamp": 100.0,
+      "camera_energies": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "avg_energy": 1000.0,
+      "min_energy": 1000,
+      "max_energy": 1000
+    }
+  ]
+}

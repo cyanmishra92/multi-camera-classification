@@ -14,8 +14,6 @@ energy:
 accuracy:
   max_accuracy: 0.95      # alpha_max
   min_accuracy_ratio: 0.3 # beta
-  high_energy_threshold: 0.8
-  low_energy_threshold: 0.3
   correlation_factor: 0.2 # rho
 
 game_theory:

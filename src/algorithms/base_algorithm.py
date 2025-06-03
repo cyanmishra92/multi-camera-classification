@@ -116,8 +116,8 @@ class BaseClassificationAlgorithm(ABC):
                 if is_correct:
                     correct_count += 1
                     
-                # Update camera energy
-                cam.update_energy(0, is_classifying=True)
+                # Update camera energy (with small time delta for classification duration)
+                cam.update_energy(0.1, is_classifying=True)  # 0.1 time units for classification
             else:
                 self.energy_violations += 1
                 

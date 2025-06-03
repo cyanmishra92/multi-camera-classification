@@ -99,7 +99,9 @@ class CameraNetwork:
                 camera_id=i,
                 position=positions[i],
                 energy_model=energy_model,
-                accuracy_model=accuracy_model
+                accuracy_model=accuracy_model,
+                num_classes=self.config.num_objects,  # num_objects represents number of object classes
+                class_assignment=i % self.config.num_classes  # Assign to classes in round-robin
             )
             cameras.append(camera)
             

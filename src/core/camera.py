@@ -38,7 +38,8 @@ class Camera:
         energy_model: EnergyModel,
         accuracy_model: AccuracyModel,
         initial_energy: Optional[float] = None,
-        class_assignment: Optional[int] = None
+        class_assignment: Optional[int] = None,
+        num_classes: int = 2
     ):
         """
         Initialize a camera.
@@ -50,12 +51,14 @@ class Camera:
             accuracy_model: Energy-dependent accuracy model
             initial_energy: Initial battery level (defaults to full capacity)
             class_assignment: Class assignment for round-robin scheduling
+            num_classes: Number of object classes for classification
         """
         self.camera_id = camera_id
         self.position = position
         self.energy_model = energy_model
         self.accuracy_model = accuracy_model
         self.class_assignment = class_assignment
+        self.num_classes = num_classes
         
         # Initialize state
         initial_energy = initial_energy or energy_model.capacity
@@ -100,8 +103,13 @@ class Camera:
         
         # Consume energy if classifying
         if is_classifying:
-            self.state.energy -= self.energy_model.classification_cost
-            self.state.energy = max(self.state.energy, 0)
+            # Only consume if we have enough energy
+            if self.state.energy >= self.energy_model.classification_cost:
+                self.state.energy -= self.energy_model.classification_cost
+            else:
+                # This should not happen if can_classify() is checked properly
+                logger.warning(f"Camera {self.camera_id} insufficient energy for classification")
+                self.state.energy = 0
             
         self.energy_history.append(self.state.energy)
         
@@ -126,7 +134,12 @@ class Camera:
         
         # Simulate classification
         is_correct = np.random.random() < effective_accuracy
-        predicted_label = true_label if is_correct else (true_label + 1) % 2  # Simple binary case
+        if is_correct:
+            predicted_label = true_label
+        else:
+            # For incorrect prediction, choose a random different label
+            other_labels = [i for i in range(self.num_classes) if i != true_label]
+            predicted_label = np.random.choice(other_labels) if other_labels else true_label
         
         # Update state
         self.state.classification_count += 1
