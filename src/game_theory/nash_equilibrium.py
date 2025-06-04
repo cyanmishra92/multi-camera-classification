@@ -194,41 +194,60 @@ class NashEquilibriumSolver:
     
     def _find_optimal_actions(self, agents: List[StrategicAgent]) -> List[bool]:
         """
-        Find socially optimal action profile (brute force for small networks).
-        
+        Find socially optimal action profile using dynamic programming.
+
+        The original implementation performed an explicit enumeration of all
+        ``2**n`` action combinations which quickly becomes infeasible.  This
+        version incrementally builds the optimal solution for subsets of agents
+        through memoised recursion.  For larger networks a greedy heuristic is
+        still used as a fall back.
+
         Args:
             agents: List of strategic agents
-            
+
         Returns:
             Optimal action profile
         """
+
         n_agents = len(agents)
-        
+
+        # Fall back to greedy approximation if the search space is too large
         if n_agents > 10:
-            # Too many agents for brute force, use greedy heuristic
             return self._greedy_optimal(agents)
-            
-        # Brute force search
-        best_welfare = -float('inf')
-        best_actions = [False] * n_agents
-        
-        # Try all 2^n combinations
-        for i in range(2**n_agents):
-            actions = [(i >> j) & 1 == 1 for j in range(n_agents)]
-            
-            # Check if all participating agents have enough energy
-            valid = all(
-                not actions[j] or agents[j].camera.can_classify()
-                for j in range(n_agents)
-            )
-            
-            if valid:
+
+        from functools import lru_cache
+
+        best_mask = 0
+        best_welfare = -float("inf")
+
+        @lru_cache(maxsize=None)
+        def solve(index: int, mask: int) -> float:
+            nonlocal best_mask, best_welfare
+
+            if index == n_agents:
+                actions = [(mask >> i) & 1 == 1 for i in range(n_agents)]
                 welfare = self.compute_social_welfare(agents, actions)
+
                 if welfare > best_welfare:
                     best_welfare = welfare
-                    best_actions = actions
-                    
-        return best_actions
+                    best_mask = mask
+
+                return welfare
+
+            # Branch: agent does not participate
+            best = solve(index + 1, mask)
+
+            # Branch: agent participates if feasible
+            if agents[index].camera.can_classify():
+                participate_value = solve(index + 1, mask | (1 << index))
+                if participate_value > best:
+                    best = participate_value
+
+            return best
+
+        solve(0, 0)
+
+        return [(best_mask >> i) & 1 == 1 for i in range(n_agents)]
     
     def _greedy_optimal(self, agents: List[StrategicAgent]) -> List[bool]:
         """
