@@ -166,7 +166,7 @@ class EnhancedFixedFrequencyAlgorithm(EnhancedBaseClassificationAlgorithm):
             return self._select_greedy(active_class)
     
 
-    def _select_position_aware(self, candidate_cameras: List[int], object_position: np.ndarray) -> List[int]:
+    def _select_position_aware(self, class_id: int, object_position: np.ndarray) -> List[int]:
         """
         Position-aware camera selection.
         
