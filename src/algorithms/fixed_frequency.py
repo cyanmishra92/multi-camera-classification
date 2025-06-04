@@ -1,7 +1,8 @@
 """Algorithm 1: Fixed frequency classification."""
 
 import numpy as np
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Set, Tuple
+import heapq
 import logging
 
 from .base_algorithm import BaseClassificationAlgorithm
@@ -42,9 +43,20 @@ class FixedFrequencyAlgorithm(BaseClassificationAlgorithm):
         
         self.num_classes = num_classes
         self.use_game_theory = use_game_theory
-        
+
         # Assign cameras to classes
         self._assign_camera_classes()
+
+        # Priority queues per class keyed by current energy
+        self.energy_heaps: Dict[int, List[Tuple[float, int]]] = {
+            cid: [] for cid in range(self.num_classes)
+        }
+        for cid, cam_ids in self.camera_classes.items():
+            for i in cam_ids:
+                cam = self.cameras[i]
+                self.energy_heaps[cid].append((-cam.current_energy, i))
+                cam.energy_heap = self.energy_heaps[cid]
+            heapq.heapify(self.energy_heaps[cid])
         
         # Initialize energy tracking
         self.energy_tracking = {
@@ -97,60 +109,52 @@ class FixedFrequencyAlgorithm(BaseClassificationAlgorithm):
         
         if self.use_game_theory:
             # Use strategic selection within class
-            return self._select_strategic(class_cameras)
+            return self._select_strategic(active_class)
         else:
             # Select subset to meet accuracy threshold
-            return self._select_greedy(class_cameras)
+            return self._select_greedy(active_class)
             
-    def _select_greedy(self, candidate_cameras: List[int]) -> List[int]:
-        """
-        Greedy selection to meet accuracy threshold.
-        
-        Args:
-            candidate_cameras: List of candidate camera IDs
-            
-        Returns:
-            Selected camera IDs
-        """
-        # Sort by energy level (descending)
-        sorted_cameras = sorted(
-            candidate_cameras,
-            key=lambda i: self.cameras[i].current_energy,
-            reverse=True
-        )
-        
-        selected = []
-        
-        for cam_id in sorted_cameras:
-            camera = self.cameras[cam_id]
-            
-            if not camera.can_classify():
+    def _select_greedy(self, class_id: int) -> List[int]:
+        """Greedy selection using the class-specific priority queue."""
+        heap = self.energy_heaps[class_id]
+        selected: List[int] = []
+        popped: List[Tuple[float, int]] = []
+
+        while heap:
+            neg_energy, cam_id = heap[0]
+            if -neg_energy != self.cameras[cam_id].current_energy:
+                heapq.heappop(heap)
                 continue
-                
+            heapq.heappop(heap)
+            if not self.cameras[cam_id].can_classify():
+                continue
             selected.append(cam_id)
-            
-            # Check if accuracy threshold met
+            popped.append((-self.cameras[cam_id].current_energy, cam_id))
             selected_cameras = [self.cameras[i] for i in selected]
             collective_accuracy = self._calculate_collective_accuracy(selected_cameras)
-            
             if collective_accuracy >= self.min_accuracy_threshold:
                 break
-                
+
+        for entry in popped:
+            heapq.heappush(heap, entry)
+
         return selected
     
-    def _select_strategic(self, candidate_cameras: List[int]) -> List[int]:
+    def _select_strategic(self, class_id: int) -> List[int]:
         """
         Strategic selection using game theory.
-        
+
         Args:
-            candidate_cameras: List of candidate camera IDs
+            class_id: Active class ID
             
         Returns:
             Selected camera IDs
         """
+        candidate_cameras = self.camera_classes[class_id]
+
         if not hasattr(self, 'strategic_agents'):
             logger.debug("Game theory not initialized, using greedy")
-            return self._select_greedy(candidate_cameras)
+            return self._select_greedy(class_id)
             
         # Get strategic agents for candidate cameras
         candidate_agents = [self.strategic_agents[i] for i in candidate_cameras]
@@ -167,7 +171,7 @@ class FixedFrequencyAlgorithm(BaseClassificationAlgorithm):
         
         if not converged:
             logger.warning("Nash equilibrium did not converge, using greedy selection")
-            return self._select_greedy(candidate_cameras)
+            return self._select_greedy(class_id)
         
         # Select cameras that chose to participate in equilibrium
         selected = [

@@ -2,7 +2,8 @@
 """Camera model with energy-dependent accuracy."""
 
 import numpy as np
-from typing import Optional, Dict, Any, Tuple
+from typing import Optional, Dict, Any, Tuple, List
+import heapq
 from dataclasses import dataclass, field
 import logging
 
@@ -66,11 +67,14 @@ class Camera:
             energy=initial_energy,
             position=position.copy()
         )
-        
+
         # History tracking
         self.energy_history = [initial_energy]
         self.accuracy_history = []
         self.participation_history = []
+
+        # Reference to algorithm energy heap for fast selection
+        self.energy_heap: Optional[List[Tuple[float, int]]] = None
         
     @property
     def current_energy(self) -> float:
@@ -110,8 +114,12 @@ class Camera:
                 # This should not happen if can_classify() is checked properly
                 logger.warning(f"Camera {self.camera_id} insufficient energy for classification")
                 self.state.energy = 0
-            
+
         self.energy_history.append(self.state.energy)
+
+        # Update algorithm's energy heap if available
+        if self.energy_heap is not None:
+            heapq.heappush(self.energy_heap, (-self.state.energy, self.camera_id))
         
     def classify(self, object_position: np.ndarray, true_label: int) -> Tuple[int, bool]:
         """
