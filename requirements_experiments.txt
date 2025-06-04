@@ -1,0 +1,32 @@
+# Requirements for running full experimental evaluation
+# Install with: pip install -r requirements_experiments.txt
+
+# Core dependencies
+numpy>=1.19.0
+pandas>=1.2.0
+matplotlib>=3.3.0
+seaborn>=0.11.0
+scipy>=1.6.0
+
+# For parallel processing
+multiprocessing-logging>=0.3.1
+
+# For progress tracking
+tqdm>=4.60.0
+
+# For configuration
+pyyaml>=5.4.0
+
+# For statistical analysis
+statsmodels>=0.12.0
+scikit-learn>=0.24.0
+
+# For reproducibility
+joblib>=1.0.0
+
+# Optional: For faster operations
+numba>=0.53.0
+
+# Optional: For pretty printing
+tabulate>=0.8.9
+termcolor>=1.1.0

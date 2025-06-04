@@ -1,0 +1,105 @@
+{
+  "test_date": "2025-06-04 14:04:35",
+  "algorithms": {
+    "Standard Algorithm": {
+      "final_accuracy": 0.6292585170340681,
+      "recent_accuracy": 0.57,
+      "avg_cameras": 1.0,
+      "violations": 0,
+      "runtime": 0.12588977813720703,
+      "target_achieved": false,
+      "checkpoints": [
+        {
+          "time": 500,
+          "overall": 0.6346153846153846,
+          "recent": 0.6346153846153846
+        },
+        {
+          "time": 1000,
+          "overall": 0.625,
+          "recent": 0.65
+        },
+        {
+          "time": 2000,
+          "overall": 0.6064814814814815,
+          "recent": 0.6
+        }
+      ]
+    },
+    "Enhanced Algorithm": {
+      "final_accuracy": 0.5210420841683366,
+      "recent_accuracy": 0.9,
+      "avg_cameras": 3.3,
+      "violations": 116,
+      "runtime": 0.8267011642456055,
+      "target_achieved": false,
+      "checkpoints": [
+        {
+          "time": 500,
+          "overall": 0.5192307692307693,
+          "recent": 0.9423076923076923
+        },
+        {
+          "time": 1000,
+          "overall": 0.5535714285714286,
+          "recent": 0.91
+        },
+        {
+          "time": 2000,
+          "overall": 0.5555555555555556,
+          "recent": 0.92
+        }
+      ]
+    },
+    "Game Theory Algorithm": {
+      "final_accuracy": 0.5430861723446894,
+      "recent_accuracy": 0.89,
+      "avg_cameras": 3.4,
+      "violations": 103,
+      "runtime": 0.7736098766326904,
+      "target_achieved": false,
+      "checkpoints": [
+        {
+          "time": 500,
+          "overall": 0.6730769230769231,
+          "recent": 0.9038461538461539
+        },
+        {
+          "time": 1000,
+          "overall": 0.5892857142857143,
+          "recent": 0.89
+        },
+        {
+          "time": 2000,
+          "overall": 0.6018518518518519,
+          "recent": 0.83
+        }
+      ]
+    },
+    "Adaptive Algorithm": {
+      "final_accuracy": 0.5430861723446894,
+      "recent_accuracy": 0.89,
+      "avg_cameras": 3.4,
+      "violations": 103,
+      "runtime": 0.8835399150848389,
+      "target_achieved": false,
+      "checkpoints": [
+        {
+          "time": 500,
+          "overall": 0.6730769230769231,
+          "recent": 0.9038461538461539
+        },
+        {
+          "time": 1000,
+          "overall": 0.5892857142857143,
+          "recent": 0.89
+        },
+        {
+          "time": 2000,
+          "overall": 0.6018518518518519,
+          "recent": 0.83
+        }
+      ]
+    }
+  }
+}

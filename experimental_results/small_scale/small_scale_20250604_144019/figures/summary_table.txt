@@ -1,0 +1,15 @@
+EXPERIMENTAL RESULTS SUMMARY
+================================================================================
+
+                      Accuracy (mean)  Accuracy (std)  Energy Violations  Fairness  Avg Cameras  Runtime (s)
+Unknown-Freq (Ours)             0.489           0.163                  0     1.000        1.356        0.062
+Fixed-Freq (Ours)               0.469           0.033                  0     1.000        3.344        0.255
+Variable-Freq (Ours)            0.458           0.058                  0     0.901        1.000        0.065
+Coverage-Based                  0.456           0.044                  0     0.163        1.000        0.068
+Greedy-Energy                   0.452           0.048                  0     0.276        1.000        0.073
+Round-Robin                     0.445           0.030                  0     1.000        3.000        0.075
+Random                          0.421           0.041                  0     0.991        2.994        0.120
+Threshold                       0.269           0.174                  0     1.000       10.000        0.125
+
+Total experiments: 144
+Unique configurations: 6

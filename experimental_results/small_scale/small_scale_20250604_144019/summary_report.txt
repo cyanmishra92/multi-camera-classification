@@ -1,0 +1,53 @@
+================================================================================
+FULL-SCALE EXPERIMENTAL RESULTS SUMMARY
+================================================================================
+
+Experiment Scale: small_scale
+Total Experiments: 144
+Successful Experiments: 144
+Total Runtime: 15.18 seconds
+
+TOP PERFORMING ALGORITHMS (by accuracy):
+----------------------------------------
+Unknown-Freq        : 0.489 ± 0.163
+Fixed-Freq          : 0.469 ± 0.033
+Variable-Freq       : 0.458 ± 0.058
+Coverage            : 0.456 ± 0.044
+Greedy-Energy       : 0.452 ± 0.048
+Round-Robin         : 0.445 ± 0.030
+Random              : 0.421 ± 0.041
+Threshold           : 0.269 ± 0.174
+
+
+ENERGY EFFICIENCY (violations per experiment):
+----------------------------------------
+Coverage            : 0.00
+Fixed-Freq          : 0.00
+Greedy-Energy       : 0.00
+Random              : 0.00
+Round-Robin         : 0.00
+Threshold           : 0.00
+Unknown-Freq        : 0.00
+Variable-Freq       : 0.00
+
+
+FAIRNESS (Jain's Index):
+----------------------------------------
+Unknown-Freq        : 1.000
+Threshold           : 1.000
+Round-Robin         : 1.000
+Fixed-Freq          : 1.000
+Random              : 0.991
+Variable-Freq       : 0.901
+Greedy-Energy       : 0.276
+Coverage            : 0.163
+
+
+BEST ALGORITHM BY SCENARIO:
+----------------------------------------
+Frequency 0.05: Unknown-Freq (0.496)
+Frequency 0.10: Unknown-Freq (0.482)
+Frequency 0.50: Unknown-Freq (0.490)
+
+
+Note: Statistical significance testing pending

@@ -1,0 +1,11 @@
+,overall_accuracy,overall_accuracy,overall_accuracy,overall_accuracy,energy_violations,energy_violations,accuracy_violations,accuracy_violations,avg_cameras_per_event,avg_cameras_per_event,jains_fairness,jains_fairness,runtime,runtime
+,mean,std,min,max,sum,mean,sum,mean,mean,std,mean,std,mean,std
+algorithm_name,,,,,,,,,,,,,,
+Coverage,0.4555,0.0442,0.3641,0.5816,0,0.0,0,0.0,1.0,0.0,0.1633,0.0916,0.0682,0.0664
+Fixed-Freq,0.4694,0.0328,0.4218,0.5116,0,0.0,0,0.0,3.3444,0.0511,0.9999,0.0001,0.2547,0.2448
+Greedy-Energy,0.4524,0.0482,0.3679,0.5465,0,0.0,0,0.0,1.0,0.0,0.2756,0.1551,0.0734,0.0782
+Random,0.4209,0.0409,0.3364,0.5263,0,0.0,84,4.6667,2.9944,0.5407,0.991,0.0078,0.1204,0.1375
+Round-Robin,0.4448,0.0304,0.3645,0.5146,0,0.0,0,0.0,3.0,0.0,0.9999,0.0001,0.0751,0.0733
+Threshold,0.2691,0.1737,0.0215,0.4574,0,0.0,61,3.3889,10.0,0.0,1.0,0.0,0.1247,0.116
+Unknown-Freq,0.4894,0.1629,0.25,0.8333,0,0.0,0,0.0,1.3556,0.3165,1.0,0.0,0.0619,0.0597
+Variable-Freq,0.4579,0.0578,0.3511,0.5682,0,0.0,0,0.0,1.0,0.0,0.9014,0.0158,0.0651,0.0607
