@@ -35,8 +35,10 @@ class EnhancedAccuracyModel(AccuracyModel):
         self.overlap_bonus = params.overlap_bonus
         self.optimal_distance = params.optimal_distance
         
-    def get_position_based_accuracy(self, camera, object_position: np.ndarray, 
-                                   energy: Optional[float] = None) -> float:
+    def get_position_based_accuracy(self, camera, object_position: np.ndarray,
+                                   energy: Optional[float] = None,
+                                   precomputed_distance: Optional[float] = None
+                                   ) -> float:
         """
         Calculate accuracy considering camera position and object location.
         
@@ -55,7 +57,10 @@ class EnhancedAccuracyModel(AccuracyModel):
         base_accuracy = self.get_accuracy(energy)
         
         # Distance factor
-        distance = np.linalg.norm(camera.position - object_position)
+        if precomputed_distance is None:
+            distance = np.linalg.norm(camera.position - object_position)
+        else:
+            distance = precomputed_distance
         distance_factor = self._calculate_distance_factor(distance)
         
         # Viewing angle factor
@@ -94,9 +99,10 @@ class EnhancedAccuracyModel(AccuracyModel):
             
         return angle_factor
     
-    def get_collective_accuracy_with_positions(self, cameras: List, 
+    def get_collective_accuracy_with_positions(self, cameras: List,
                                               object_position: np.ndarray,
-                                              energies: Optional[np.ndarray] = None) -> float:
+                                              energies: Optional[np.ndarray] = None,
+                                              distances: Optional[np.ndarray] = None) -> float:
         """
         Calculate collective accuracy considering camera positions and overlap.
         
@@ -113,11 +119,15 @@ class EnhancedAccuracyModel(AccuracyModel):
             
         # Get individual position-based accuracies
         if energies is None:
-            accuracies = [self.get_position_based_accuracy(cam, object_position) 
-                         for cam in cameras]
-        else:
-            accuracies = [self.get_position_based_accuracy(cam, object_position, e) 
-                         for cam, e in zip(cameras, energies)]
+            energies = [cam.current_energy for cam in cameras]
+
+        if distances is None:
+            distances = [np.linalg.norm(cam.position - object_position) for cam in cameras]
+
+        accuracies = [
+            self.get_position_based_accuracy(cam, object_position, energy, dist)
+            for cam, energy, dist in zip(cameras, energies, distances)
+        ]
         
         # Calculate overlap bonuses
         overlap_factor = self._calculate_overlap_factor(cameras, object_position)
