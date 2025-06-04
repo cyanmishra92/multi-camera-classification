@@ -171,8 +171,10 @@ def run_stress_test(test_name, config, test_params, output_dir):
             print(f"    Execution time: {performance_metrics[algo]['execution_time']:.2f}s")
             print(f"    Memory usage: {mem_before:.1f}MB -> {mem_after:.1f}MB "
                   f"(+{performance_metrics[algo]['memory_increase']:.1f}MB)")
-            print(f"    Events/second: {performance_metrics[algo]['total_events'] / "
-                  f"performance_metrics[algo]['execution_time']:.2f}")
+            print(
+                f"    Events/second: "
+                f"{performance_metrics[algo]['total_events'] / performance_metrics[algo]['execution_time']:.2f}"
+            )
             print(f"    Accuracy: {result['network_stats']['accuracy']:.3f}")
             
         except Exception as e:
