@@ -4,6 +4,9 @@
 import numpy as np
 from typing import Optional
 from dataclasses import dataclass
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -41,8 +44,13 @@ class EnergyModel:
         self.min_operational = params.min_operational
 
         # Compute derived parameters
-        self.full_recharge_time = self.capacity / self.recharge_rate
-        self.min_recharge_time = self.min_operational / self.recharge_rate
+        if self.recharge_rate > 0:
+            self.full_recharge_time = self.capacity / self.recharge_rate
+            self.min_recharge_time = self.min_operational / self.recharge_rate
+        else:
+            logger.warning("Recharge rate is non-positive; recharge times set to infinity")
+            self.full_recharge_time = float('inf')
+            self.min_recharge_time = float('inf')
 
         # Energy thresholds
         self.e_high = params.high_threshold * self.capacity
@@ -76,6 +84,10 @@ class EnergyModel:
 
         if current_energy >= target_energy:
             return 0.0
+
+        if self.recharge_rate <= 0:
+            logger.warning("Recharge rate is non-positive; time to recharge is infinite")
+            return float('inf')
 
         return (target_energy - current_energy) / self.recharge_rate
 
