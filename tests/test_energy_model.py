@@ -97,6 +97,19 @@ class TestEnergyModel(unittest.TestCase):
         self.assertEqual(self.model.full_recharge_time, 100)  # 1000 / 10
         self.assertEqual(self.model.min_recharge_time, 10)   # 100 / 10
 
+    def test_zero_recharge_rate(self):
+        """Time to recharge should be infinite when recharge rate is zero."""
+        params = EnergyParameters(
+            capacity=100,
+            recharge_rate=0,
+            classification_cost=10,
+            min_operational=10
+        )
+        model = EnergyModel(params)
+
+        time = model.time_to_recharge(0, 50)
+        self.assertEqual(time, float('inf'))
+
 
 if __name__ == "__main__":
     unittest.main()
