@@ -208,7 +208,7 @@ class EnhancedAccuracyModel(AccuracyModel):
         # Score each camera by accuracy per unit energy
         scores = []
         for i, cam in enumerate(cameras):
-            if cam.energy >= self.min_operational:
+            if cam.current_energy >= self.min_operational:
                 accuracy = self.get_position_based_accuracy(cam, object_position)
                 efficiency = accuracy / cam.energy_model.classification_cost
                 scores.append((i, efficiency, accuracy))
