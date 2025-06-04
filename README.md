@@ -36,7 +36,7 @@ This framework addresses the challenge of coordinating multiple energy-harvestin
 ```bash
 # Clone the repository
 git clone https://github.com/cyanmishra92/multi-camera-classification
-cd multi_camera_classification
+cd multi-camera-classification
 
 # Create virtual environment
 python -m venv venv
@@ -217,7 +217,7 @@ This guide will help you get started with the multi-camera classification framew
 
 ```bash
 git clone https://github.com/yourusername/multi_camera_classification.git
-cd multi_camera_classification
+cd multi-camera-classification
 ```
 
 ### Step 2: Create Virtual Environment
