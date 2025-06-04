@@ -202,7 +202,10 @@ class EnhancedBaseClassificationAlgorithm(BaseClassificationAlgorithm):
         return result
     
     def _calculate_enhanced_collective_accuracy(
-        self, cameras: List[Camera], object_position: np.ndarray
+        self,
+        cameras: List[Camera],
+        object_position: np.ndarray,
+        distances: Optional[np.ndarray] = None
     ) -> float:
         """Calculate collective accuracy with position awareness."""
         if not cameras or not self.using_enhanced:
@@ -211,7 +214,7 @@ class EnhancedBaseClassificationAlgorithm(BaseClassificationAlgorithm):
         # Use enhanced accuracy model
         accuracy_model = cameras[0].accuracy_model
         return accuracy_model.get_collective_accuracy_with_positions(
-            cameras, object_position
+            cameras, object_position, distances=distances
         )
     
     def get_optimal_camera_count(
