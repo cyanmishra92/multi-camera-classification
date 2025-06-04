@@ -149,8 +149,6 @@ class EnhancedBaseClassificationAlgorithm(BaseClassificationAlgorithm):
                 
                 participating_cameras.append(selected_camera_ids[i])
                 
-                # Update camera energy
-                cam.update_energy(0, is_classifying=True)
                 
                 # Update camera's classification history
                 # TODO: Add classification record tracking to Camera class
