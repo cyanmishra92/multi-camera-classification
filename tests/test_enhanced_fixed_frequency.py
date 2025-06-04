@@ -80,7 +80,9 @@ class TestEnhancedFixedFrequencyPrecompute(unittest.TestCase):
         candidates = self.algorithm.camera_classes[class_id]
 
         expected = self.baseline_select(candidates, obj_pos)
-        result = self.algorithm.select_cameras(class_id, 0.0, obj_pos)
+        # Use instance_id that maps to class_id 0
+        instance_id = class_id  # Since instance_id % num_classes gives class_id
+        result = self.algorithm.select_cameras(instance_id, 0.0, obj_pos)
         self.assertEqual(expected, result)
 
         selected_cams = [self.cameras[i] for i in result]

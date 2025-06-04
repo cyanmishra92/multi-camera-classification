@@ -94,6 +94,10 @@ class Camera:
         """
         Update energy level based on harvesting and consumption.
         
+        NOTE: This method is kept for compatibility but should not be used
+        when the camera is part of a CameraNetwork, as the network manages
+        energy updates centrally for performance.
+        
         Args:
             time_delta: Time elapsed since last update
             is_classifying: Whether camera is performing classification

@@ -123,7 +123,7 @@ class GameTheoreticFixedFrequencyAlgorithm(EnhancedFixedFrequencyAlgorithm):
         if selected:
             selected_cameras = [self.cameras[i] for i in selected]
             collective_accuracy = self._calculate_enhanced_collective_accuracy(
-                selected_cameras, object_position
+                selected_cameras, object_position, None
             )
             
             # If below threshold, add more cameras strategically
@@ -235,7 +235,7 @@ class GameTheoreticFixedFrequencyAlgorithm(EnhancedFixedFrequencyAlgorithm):
             
             selected_cameras = [self.cameras[i] for i in augmented]
             new_accuracy = self._calculate_enhanced_collective_accuracy(
-                selected_cameras, object_position
+                selected_cameras, object_position, None
             )
             
             if new_accuracy >= self.min_accuracy_threshold:
@@ -256,7 +256,11 @@ class GameTheoreticFixedFrequencyAlgorithm(EnhancedFixedFrequencyAlgorithm):
             Selected camera IDs
         """
         # Use position-aware greedy selection
-        return self._select_position_aware(candidate_cameras, object_position)
+        # Get the class_id from the first candidate camera
+        if candidate_cameras:
+            class_id = self.cameras[candidate_cameras[0]].class_assignment
+            return self._select_position_aware(class_id, object_position)
+        return []
     
     def _analyze_equilibrium(self, agents: List[StrategicAgent],
                            equilibrium_actions: List[bool]) -> None:

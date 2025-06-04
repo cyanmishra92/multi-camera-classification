@@ -81,7 +81,8 @@ class BaseClassificationAlgorithm(ABC):
         selected_camera_ids = self.select_cameras(instance_id, current_time)
         
         if not selected_camera_ids:
-            self.energy_violations += 1
+            # This is not an energy violation - it's the algorithm correctly
+            # avoiding selection when cameras don't have energy
             logger.warning(f"No cameras selected for instance {instance_id}")
             return {
                 'instance_id': instance_id,

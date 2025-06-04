@@ -124,8 +124,9 @@ class UnknownFrequencyAlgorithm(BaseClassificationAlgorithm):
             if cam_id in recent_participants:
                 continue
                 
-            # Check if camera can participate
-            if not agent.camera.can_classify():
+            # Check if camera can participate with the classification cost
+            # This prevents selecting cameras that will fail later
+            if agent.camera.state.energy < agent.camera.energy_model.classification_cost:
                 continue
                 
             # Update future value estimate
@@ -188,10 +189,11 @@ class UnknownFrequencyAlgorithm(BaseClassificationAlgorithm):
         Returns:
             Updated selection
         """
-        # Get available cameras
+        # Get available cameras with sufficient energy
         available_cameras = [
             cam_id for cam_id in class_camera_ids
-            if cam_id not in recent_participants and self.cameras[cam_id].can_classify()
+            if cam_id not in recent_participants and 
+            self.cameras[cam_id].state.energy >= self.cameras[cam_id].energy_model.classification_cost
         ]
         
         if not available_cameras:

@@ -65,9 +65,6 @@ class EnhancedFixedFrequencyAlgorithm(EnhancedBaseClassificationAlgorithm):
         # Initialize performance tracking per class
         self.class_performance = {i: [] for i in range(num_classes)}
         
-        # Initialize performance tracking per class
-        self.class_performance = {i: [] for i in range(num_classes)}
-        
     def _assign_camera_classes_spatial(self) -> None:
         """Assign cameras to classes ensuring spatial diversity."""
         # If not using enhanced model, fall back to round-robin
