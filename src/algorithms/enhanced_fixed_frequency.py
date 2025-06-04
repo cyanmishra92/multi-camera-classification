@@ -1,7 +1,8 @@
 """Enhanced Algorithm 1: Fixed frequency with position-aware selection."""
 
 import numpy as np
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Set, Tuple
+import heapq
 import logging
 
 from .enhanced_base_algorithm import EnhancedBaseClassificationAlgorithm
@@ -46,9 +47,23 @@ class EnhancedFixedFrequencyAlgorithm(EnhancedBaseClassificationAlgorithm):
         self.num_classes = num_classes
         self.use_game_theory = use_game_theory
         self.position_weight = position_weight
-        
+
         # Assign cameras to classes with spatial diversity
         self._assign_camera_classes_spatial()
+
+        # Priority queues per class
+        self.energy_heaps: Dict[int, List[Tuple[float, int]]] = {
+            cid: [] for cid in range(self.num_classes)
+        }
+        for cid, cam_ids in self.camera_classes.items():
+            for i in cam_ids:
+                cam = self.cameras[i]
+                self.energy_heaps[cid].append((-cam.current_energy, i))
+                cam.energy_heap = self.energy_heaps[cid]
+            heapq.heapify(self.energy_heaps[cid])
+
+        # Initialize performance tracking per class
+        self.class_performance = {i: [] for i in range(num_classes)}
         
         # Initialize performance tracking per class
         self.class_performance = {i: [] for i in range(num_classes)}
@@ -142,28 +157,30 @@ class EnhancedFixedFrequencyAlgorithm(EnhancedBaseClassificationAlgorithm):
         
         if self.use_game_theory and object_position is not None:
             # Use strategic selection with position awareness
-            return self._select_strategic_enhanced(class_cameras, object_position)
+            return self._select_strategic_enhanced(active_class, object_position)
         elif object_position is not None and self.using_enhanced:
             # Position-aware greedy selection
-            return self._select_position_aware(class_cameras, object_position)
+            return self._select_position_aware(active_class, object_position)
         else:
             # Standard greedy selection
-            return self._select_greedy(class_cameras)
+            return self._select_greedy(active_class)
     
-    def _select_position_aware(self, candidate_cameras: List[int], 
+    def _select_position_aware(self, class_id: int,
                                object_position: np.ndarray) -> List[int]:
         """
         Position-aware camera selection.
         
         Args:
-            candidate_cameras: List of candidate camera IDs
+            class_id: Active class ID
             object_position: Object position
             
         Returns:
             Selected camera IDs
         """
+        candidate_cameras = self.camera_classes[class_id]
+
         if not self.using_enhanced:
-            return self._select_greedy(candidate_cameras)
+            return self._select_greedy(class_id)
             
         # Score cameras by position and energy
         camera_scores = []
@@ -208,20 +225,22 @@ class EnhancedFixedFrequencyAlgorithm(EnhancedBaseClassificationAlgorithm):
                 
         return selected
     
-    def _select_strategic_enhanced(self, candidate_cameras: List[int],
+    def _select_strategic_enhanced(self, class_id: int,
                                   object_position: np.ndarray) -> List[int]:
         """
         Strategic selection with game theory and position awareness.
         
         Args:
-            candidate_cameras: List of candidate camera IDs
+            class_id: Active class ID
             object_position: Object position
             
         Returns:
             Selected camera IDs
         """
+        candidate_cameras = self.camera_classes[class_id]
+
         if not self.using_enhanced:
-            return self._select_greedy(candidate_cameras)
+            return self._select_greedy(class_id)
             
         # Calculate utilities for each camera
         camera_utilities = []
@@ -292,32 +311,34 @@ class EnhancedFixedFrequencyAlgorithm(EnhancedBaseClassificationAlgorithm):
                         
         return selected
     
-    def _select_greedy(self, candidate_cameras: List[int]) -> List[int]:
-        """Standard greedy selection by energy."""
-        sorted_cameras = sorted(
-            candidate_cameras,
-            key=lambda i: self.cameras[i].current_energy,
-            reverse=True
-        )
-        
-        selected = []
-        
-        for cam_id in sorted_cameras:
-            camera = self.cameras[cam_id]
-            
-            if not camera.can_classify():
+    def _select_greedy(self, class_id: int) -> List[int]:
+        """Standard greedy selection using a class-specific priority queue."""
+        heap = self.energy_heaps[class_id]
+        selected: List[int] = []
+        popped: List[Tuple[float, int]] = []
+
+        while heap:
+            neg_energy, cam_id = heap[0]
+            if -neg_energy != self.cameras[cam_id].current_energy:
+                heapq.heappop(heap)
                 continue
-                
+            heapq.heappop(heap)
+            if not self.cameras[cam_id].can_classify():
+                continue
             selected.append(cam_id)
-            
-            # Check if accuracy threshold met
+            popped.append((-self.cameras[cam_id].current_energy, cam_id))
             selected_cameras = [self.cameras[i] for i in selected]
             collective_accuracy = self._calculate_collective_accuracy(selected_cameras)
-            
             if collective_accuracy >= self.min_accuracy_threshold:
                 break
-                
+
+        for entry in popped:
+            heapq.heappush(heap, entry)
+
         return selected
+
+    def _pop_best_camera(self, candidate_set: Set[int]) -> Optional[int]:
+        pass  # Placeholder for compatibility
     
     def get_class_performance(self, class_id: int) -> Dict:
         """Get performance metrics for a specific class."""
