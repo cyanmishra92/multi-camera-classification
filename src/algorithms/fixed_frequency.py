@@ -62,16 +62,23 @@ class FixedFrequencyAlgorithm(BaseClassificationAlgorithm):
             }
         
     def _assign_camera_classes(self) -> None:
-        """Build camera class mapping from pre-assigned classes."""
-        # Create class mapping from existing assignments
+        """Assign cameras to classes and build mapping."""
+        # If none of the cameras have a class assignment, assign in round-robin
+        if all(cam.class_assignment is None for cam in self.cameras):
+            for i, camera in enumerate(self.cameras):
+                camera.class_assignment = i % self.num_classes
+
+        # Build class mapping based on assignments
         self.camera_classes = {}
         for class_id in range(self.num_classes):
             self.camera_classes[class_id] = [
                 i for i, cam in enumerate(self.cameras)
                 if cam.class_assignment == class_id
             ]
-            
-        logger.info(f"Mapped {len(self.cameras)} cameras to {self.num_classes} classes")
+
+        logger.info(
+            f"Mapped {len(self.cameras)} cameras to {self.num_classes} classes"
+        )
         
     def select_cameras(self, instance_id: int, current_time: float) -> List[int]:
         """

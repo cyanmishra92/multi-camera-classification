@@ -55,10 +55,15 @@ class VariableFrequencyAlgorithm(BaseClassificationAlgorithm):
         self.class_turns = {i: 0 for i in range(num_classes)}
         
     def _assign_camera_subclasses(self) -> None:
-        """Assign cameras to subclasses with energy diversity based on pre-assigned classes."""
+        """Assign cameras to subclasses with energy diversity."""
+        # Assign classes if none are set
+        if all(cam.class_assignment is None for cam in self.cameras):
+            for i, camera in enumerate(self.cameras):
+                camera.class_assignment = i % self.num_classes
+
         # Create subclass structure
         self.camera_subclasses = {}
-        
+
         for class_id in range(self.num_classes):
             class_cameras = [
                 i for i, cam in enumerate(self.cameras)

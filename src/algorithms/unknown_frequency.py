@@ -60,7 +60,12 @@ class UnknownFrequencyAlgorithm(BaseClassificationAlgorithm):
         self.participation_rates = []
         
     def _assign_camera_classes(self) -> None:
-        """Build camera class mapping from pre-assigned classes."""
+        """Assign cameras to classes and build mapping."""
+        # Assign classes if none are set
+        if all(cam.class_assignment is None for cam in self.cameras):
+            for i, camera in enumerate(self.cameras):
+                camera.class_assignment = i % self.num_classes
+
         # Create class mapping
         self.camera_classes = {}
         for class_id in range(self.num_classes):
