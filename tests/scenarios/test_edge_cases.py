@@ -309,8 +309,10 @@ def generate_edge_case_report(all_results, output_dir):
                     f.write(f"  Energy Violations: {stats.get('energy_violations', 0)}\n")
                     f.write(f"  Accuracy Violations: {stats.get('accuracy_violations', 0)}\n")
                     f.write(f"  Total Classifications: {stats.get('total_classifications', 0)}\n")
-                    f.write(f"  Success Rate: {stats.get('successful_classifications', 0)/"
-                           f"{max(1, stats.get('total_classifications', 1)):.1%}\n")
+                    f.write(
+                        f"  Success Rate: "
+                        f"{stats.get('successful_classifications', 0) / max(1, stats.get('total_classifications', 1)):.1%}\n"
+                    )
         
         f.write("\n" + "="*80 + "\n")
         f.write("KEY FINDINGS:\n")
