@@ -76,21 +76,23 @@ class GameTheoreticFixedFrequencyAlgorithm(EnhancedFixedFrequencyAlgorithm):
         self.equilibrium_history = []
         self.welfare_history = []
         
-    def _select_strategic_enhanced(self, candidate_cameras: List[int],
+    def _select_strategic_enhanced(self, class_id: int,
                                   object_position: np.ndarray) -> List[int]:
         """
         Strategic selection using Nash equilibrium and position awareness.
         
         Args:
-            candidate_cameras: List of candidate camera IDs
+            class_id: Active class ID
             object_position: Object position
             
         Returns:
             Selected camera IDs
         """
+        candidate_cameras = self.camera_classes[class_id]
+
         if not self.use_nash_equilibrium:
             # Fall back to parent implementation
-            return super()._select_strategic_enhanced(candidate_cameras, object_position)
+            return super()._select_strategic_enhanced(class_id, object_position)
         
         # Get strategic agents for candidates
         candidate_agents = [self.strategic_agents[i] for i in candidate_cameras]
