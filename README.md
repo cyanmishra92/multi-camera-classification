@@ -35,7 +35,7 @@ This framework addresses the challenge of coordinating multiple energy-harvestin
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/multi_camera_classification.git
+git clone https://github.com/cyanmishra92/multi-camera-classification
 cd multi_camera_classification
 
 # Create virtual environment
@@ -174,9 +174,9 @@ If you use this framework in your research, please cite:
 ```bibtex
 @software{multi_camera_classification,
   title = {Multi-Camera Energy-Aware Classification Framework},
-  author = {Your Name},
-  year = {2024},
-  url = {https://github.com/yourusername/multi_camera_classification}
+  author = {Cyan Subhra Mishra},
+  year = {2025},
+  url = {https://github.com/cyanmishra92/multi-camera-classification}
 }
 ```
 
