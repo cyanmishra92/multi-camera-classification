@@ -508,6 +508,18 @@ Enable detailed logging:
 python src/main.py --log-level DEBUG
 ```
 
+### Benchmarking
+
+Run `benchmarks/update_time_benchmark.py` to measure energy update performance
+for large networks:
+
+```bash
+python benchmarks/update_time_benchmark.py
+```
+
+The script compares the new vectorized update against a naive Python loop and
+prints the observed speedup.
+
 ### Getting Help
 
 - Check the [API Documentation](docs/api/)

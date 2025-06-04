@@ -49,6 +49,8 @@ class CameraNetwork:
         
         # Initialize cameras
         self.cameras = self._initialize_cameras()
+        # Store energies in NumPy array for fast updates
+        self.camera_energies = np.array([c.current_energy for c in self.cameras], dtype=float)
         
         # Classification algorithm
         self.algorithm = None
@@ -197,6 +199,10 @@ class CameraNetwork:
             true_label=true_label,
             current_time=self.current_time
         )
+
+        # Apply energy cost for participating cameras at the classification time
+        if result.get('selected_cameras'):
+            self.update_time(0.0, classifying_cameras=result['selected_cameras'])
         
         self.classification_count += 1
         
@@ -205,7 +211,7 @@ class CameraNetwork:
         
         return result
     
-    def update_time(self, time_delta: float) -> None:
+    def update_time(self, time_delta: float, classifying_cameras: Optional[List[int]] = None) -> None:
         """
         Update network time and camera states.
         
@@ -214,9 +220,28 @@ class CameraNetwork:
         """
         self.current_time += time_delta
         
-        # Update camera energy
-        for camera in self.cameras:
-            camera.update_energy(time_delta, is_classifying=False)
+        # Vectorized energy update for all cameras
+        model = self.cameras[0].energy_model
+
+        # Harvested energy for all cameras
+        harvested = model.harvest(time_delta)
+        self.camera_energies = np.minimum(
+            self.camera_energies + harvested,
+            model.capacity
+        )
+
+        # Apply classification costs if provided
+        if classifying_cameras:
+            idx = np.array(classifying_cameras, dtype=int)
+            self.camera_energies[idx] = np.maximum(
+                self.camera_energies[idx] - model.classification_cost,
+                0
+            )
+
+        # Write energies back to cameras and record history
+        for i, cam in enumerate(self.cameras):
+            cam.state.energy = self.camera_energies[i]
+            cam.energy_history.append(cam.state.energy)
             
         # Track energy state
         self._track_energy_state()
@@ -228,15 +253,24 @@ class CameraNetwork:
             'classification_count': self.classification_count,
             'result': result
         })
+
+    def _sync_camera_energies(self, indices: Optional[List[int]] = None) -> None:
+        """Synchronize numpy energy array with individual camera states."""
+        if indices is None:
+            for i, cam in enumerate(self.cameras):
+                self.camera_energies[i] = cam.current_energy
+        else:
+            for i in indices:
+                self.camera_energies[i] = self.cameras[i].current_energy
         
     def _track_energy_state(self) -> None:
         """Track current energy state of all cameras."""
         energy_state = {
             'timestamp': self.current_time,
-            'camera_energies': [cam.current_energy for cam in self.cameras],
-            'avg_energy': np.mean([cam.current_energy for cam in self.cameras]),
-            'min_energy': np.min([cam.current_energy for cam in self.cameras]),
-            'max_energy': np.max([cam.current_energy for cam in self.cameras])
+            'camera_energies': self.camera_energies.tolist(),
+            'avg_energy': float(np.mean(self.camera_energies)),
+            'min_energy': float(np.min(self.camera_energies)),
+            'max_energy': float(np.max(self.camera_energies))
         }
         
         self.energy_history.append(energy_state)
@@ -283,7 +317,10 @@ class CameraNetwork:
         self.classification_count = 0
         self.performance_history = []
         self.energy_history = []
-        
+
+        # Reset numpy energy array
+        self.camera_energies = np.array([c.current_energy for c in self.cameras], dtype=float)
+
         if self.algorithm:
             self.algorithm.classification_history = []
             self.algorithm.total_classifications = 0

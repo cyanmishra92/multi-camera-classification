@@ -165,8 +165,8 @@ class EnhancedFixedFrequencyAlgorithm(EnhancedBaseClassificationAlgorithm):
             # Standard greedy selection
             return self._select_greedy(active_class)
     
-    def _select_position_aware(self, class_id: int,
-                               object_position: np.ndarray) -> List[int]:
+
+    def _select_position_aware(self, candidate_cameras: List[int], object_position: np.ndarray) -> List[int]:
         """
         Position-aware camera selection.
         
@@ -182,28 +182,37 @@ class EnhancedFixedFrequencyAlgorithm(EnhancedBaseClassificationAlgorithm):
         if not self.using_enhanced:
             return self._select_greedy(class_id)
             
+        # Precompute distances to all candidate cameras
+        positions = np.array([self.cameras[i].position for i in candidate_cameras])
+        distances = np.linalg.norm(positions - object_position, axis=1)
+        distance_map = {cid: d for cid, d in zip(candidate_cameras, distances)}
+
         # Score cameras by position and energy
         camera_scores = []
-        
+
         for cam_id in candidate_cameras:
             camera = self.cameras[cam_id]
-            
+
             if not camera.can_classify():
                 continue
-                
+
+            dist = distance_map[cam_id]
+
             # Calculate position-based accuracy
             pos_accuracy = camera.accuracy_model.get_position_based_accuracy(
-                camera, object_position
+                camera, object_position, precomputed_distance=dist
             )
-            
+
             # Energy factor
             energy_factor = camera.current_energy / camera.energy_model.capacity
-            
+
             # Combined score
-            score = (self.position_weight * pos_accuracy + 
-                    (1 - self.position_weight) * energy_factor)
-            
-            camera_scores.append((cam_id, score, pos_accuracy))
+            score = (
+                self.position_weight * pos_accuracy
+                + (1 - self.position_weight) * energy_factor
+            )
+
+            camera_scores.append((cam_id, score, dist))
         
         # Sort by score
         camera_scores.sort(key=lambda x: x[1], reverse=True)
@@ -211,13 +220,14 @@ class EnhancedFixedFrequencyAlgorithm(EnhancedBaseClassificationAlgorithm):
         # Select cameras to meet accuracy threshold
         selected = []
         
-        for cam_id, score, _ in camera_scores:
+        for cam_id, score, dist in camera_scores:
             selected.append(cam_id)
-            
+
             # Check if accuracy threshold met
             selected_cameras = [self.cameras[i] for i in selected]
+            selected_distances = np.array([distance_map[i] for i in selected])
             collective_accuracy = self._calculate_enhanced_collective_accuracy(
-                selected_cameras, object_position
+                selected_cameras, object_position, selected_distances
             )
             
             if collective_accuracy >= self.min_accuracy_threshold:
@@ -242,18 +252,25 @@ class EnhancedFixedFrequencyAlgorithm(EnhancedBaseClassificationAlgorithm):
         if not self.using_enhanced:
             return self._select_greedy(class_id)
             
+        # Precompute distances
+        positions = np.array([self.cameras[i].position for i in candidate_cameras])
+        distances = np.linalg.norm(positions - object_position, axis=1)
+        distance_map = {cid: d for cid, d in zip(candidate_cameras, distances)}
+
         # Calculate utilities for each camera
         camera_utilities = []
-        
+
         for cam_id in candidate_cameras:
             camera = self.cameras[cam_id]
-            
+
             if not camera.can_classify():
                 continue
-                
+
+            dist = distance_map[cam_id]
+
             # Position-based accuracy
             accuracy = camera.accuracy_model.get_position_based_accuracy(
-                camera, object_position
+                camera, object_position, precomputed_distance=dist
             )
             
             # Expected reward
@@ -279,7 +296,7 @@ class EnhancedFixedFrequencyAlgorithm(EnhancedBaseClassificationAlgorithm):
         selected = []
         remaining_budget = len(candidate_cameras) * 50  # Energy budget
         
-        for cam_id, utility, accuracy in camera_utilities:
+        for cam_id, utility, _ in camera_utilities:
             camera = self.cameras[cam_id]
             
             if camera.energy_model.classification_cost <= remaining_budget:
@@ -288,8 +305,9 @@ class EnhancedFixedFrequencyAlgorithm(EnhancedBaseClassificationAlgorithm):
                 
                 # Check accuracy with current selection
                 selected_cameras = [self.cameras[i] for i in selected]
+                selected_distances = np.array([distance_map[i] for i in selected])
                 collective_accuracy = self._calculate_enhanced_collective_accuracy(
-                    selected_cameras, object_position
+                    selected_cameras, object_position, selected_distances
                 )
                 
                 if collective_accuracy >= self.min_accuracy_threshold:
@@ -300,10 +318,11 @@ class EnhancedFixedFrequencyAlgorithm(EnhancedBaseClassificationAlgorithm):
             for cam_id, _, _ in camera_utilities:
                 if cam_id not in selected:
                     selected.append(cam_id)
-                    
+
                     selected_cameras = [self.cameras[i] for i in selected]
+                    selected_distances = np.array([distance_map[i] for i in selected])
                     collective_accuracy = self._calculate_enhanced_collective_accuracy(
-                        selected_cameras, object_position
+                        selected_cameras, object_position, selected_distances
                     )
                     
                     if collective_accuracy >= self.min_accuracy_threshold:
