@@ -2,6 +2,8 @@
 
 A game-theoretic framework for multi-camera classification systems with energy harvesting constraints. This project implements energy-aware camera coordination algorithms that optimize the trade-off between classification accuracy and energy sustainability.
 
+*Last updated: June 4, 2025*
+
 ## 🎯 Overview
 
 This framework addresses the challenge of coordinating multiple energy-harvesting cameras for object classification tasks. Key features include:
@@ -49,7 +51,16 @@ pip install -e .[dev,viz]
 ### Run Example Simulation
 
 ```bash
-# Run with default settings
+# Using simplified run script (recommended)
+python run_simulation.py --algorithm fixed --duration 1000 --visualize
+
+# Or use the test script for comprehensive testing
+./run_tests.sh --duration 1000 --frequency 0.1
+
+# For full experiments
+./run_full_experiments.sh small
+
+# Or using the main module directly
 python src/main.py --algorithm fixed --duration 1000 --visualize
 
 # Run with custom configuration
@@ -97,6 +108,10 @@ result = network.classify_object(
 
 ```
 multi_camera_classification/
+├── run_simulation.py       # Simple entry point for running simulations
+├── run_tests.sh            # Script for running comprehensive tests
+├── run_full_experiments.sh # Master experiment script for research
+├── check_experiment_setup.py # Script to verify experiment environment
 ├── src/
 │   ├── core/               # Core camera and network models
 │   ├── algorithms/         # Classification algorithms
@@ -111,7 +126,7 @@ multi_camera_classification/
 ├── notebooks/              # Jupyter notebooks
 ├── docs/                   # Documentation
 ├── experimental_results/   # Organized experiment results
-└── run_full_experiments.sh # Master experiment script
+└── scripts/                # Utility and demo scripts
 ```
 
 ## 🔧 Configuration
@@ -168,6 +183,66 @@ pytest tests/ -v --cov=src
 ./run_full_experiments.sh small    # ~5 minutes, 144 experiments
 ./run_full_experiments.sh medium   # ~2 hours, 28,800 experiments  
 ./run_full_experiments.sh large    # ~8 hours, 144,000 experiments
+```
+
+### Run Script Features
+The `run_full_experiments.sh` script provides a comprehensive pipeline for research experiments:
+
+- **Automatic Organization**: Creates timestamped directories for all results
+- **Parallel Processing**: Configures optimal worker counts based on experiment scale
+- **Progress Tracking**: Detailed logs with timing information
+- **Result Visualization**: Automatically generates publication-quality figures
+- **Combined Reporting**: Creates a unified markdown report of all experiment results
+- **Interactive Mode**: Option to run incrementally from small to large scale
+- **Resource Management**: Configurable timeouts prevent runaway processes
+
+### Running Tests
+The `run_tests.sh` script provides a simplified way to run comprehensive tests:
+
+```bash
+# Run with default settings
+./run_tests.sh
+
+# Run with custom parameters
+./run_tests.sh --duration 2000 --frequency 0.05 --config configs/my_config.yaml
+```
+
+### Basic Simulation
+For quick experiments, use the simplified `run_simulation.py` script:
+
+```bash
+# Run with default settings
+python run_simulation.py
+
+# Run with specific algorithm
+python run_simulation.py --algorithm variable --duration 500 --visualize
+```
+
+### Running Scripts in Different Environments
+
+#### Windows
+Windows users can run the Python scripts directly or use PowerShell to execute the bash scripts via WSL:
+
+```powershell
+# Run Python script directly
+python run_simulation.py --algorithm fixed --duration 1000
+
+# Run bash scripts via WSL
+wsl ./run_tests.sh
+wsl ./run_full_experiments.sh small
+```
+
+#### Linux/macOS
+Linux and macOS users can run all scripts directly:
+
+```bash
+# Make scripts executable (first time only)
+chmod +x run_tests.sh run_full_experiments.sh check_experiment_setup.py
+
+# Run scripts
+./run_simulation.py
+./run_tests.sh
+./run_full_experiments.sh
 ```
 
 ### Results Location
@@ -561,6 +636,22 @@ prints the observed speedup.
 - Check the [API Documentation](docs/api/)
 - Review example notebooks in `notebooks/`
 - Open an issue on GitHub
+
+## Current Experimental Status
+
+The most recent experimental run (as of June 4, 2025) has completed:
+- **Small-scale experiments**: 144 total experiments with 10 cameras, 3 classes
+- **Frequencies tested**: {0.05, 0.1, 0.5} Hz with accuracy thresholds: {0.7, 0.8}
+- **Duration**: 2000 time units per experiment with 3 repetitions per configuration
+
+To view the full analysis of the experimental results, check the generated report:
+```bash
+# On Windows
+notepad experimental_results\COMBINED_RESULTS_20250604_195938.md
+
+# On Linux/WSL
+cat experimental_results/COMBINED_RESULTS_20250604_195938.md
+```
 
 ## Next Steps
 
